@@ -263,6 +263,10 @@ library BytesLib {
 
                 //update free-memory pointer
                 //allocating the array padded to 32 bytes like the compiler does now
+
+                // 31 的二进制是 11111 所以not 31得二进制就是00000
+                // 所以 add(mc,31) 和 00000 进行and运算,就是找向下的32的倍数
+                // 因为只有32的倍数的二进制的最后5位是0
                 mstore(0x40, and(add(mc, 31), not(31)))
             }
             //if we want a zero-length slice let's just return a zero-length array
